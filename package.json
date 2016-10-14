@@ -145,7 +145,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "scripts": {
-    "postinstall": "node npm/postinstall.js && npm run transpile && npm run docs && npm run phenomic-theme-base",
+    "postinstall": "node npm/postinstall.js && npm run transpile",
     "transpile": "babel --ignore __tests__ --copy-files src --out-dir lib",
     "prepublish": "rimraf lib && npm run transpile",
     "#lint:js:eslint": "https://github.com/eslint/eslint/issues/5679",
@@ -221,10 +221,12 @@
           "max": 20
         }
       ],
-      "import/no-extraneous-dependencies": 0
+      "import/no-extraneous-dependencies": 0,
+      "import/no-unresolved": 0
     }
   },
   "#eslintConfig/rules/import/no-extraneous-dependencies": "phenomic usage in theme is not specified in package.json (and can't be for now)",
+  "#eslintConfig/rules/import/no-unresolved": "deps in docs & theme are installed after the lint step",
   "stylelint": {
     "extends": "stylelint-config-standard"
   },
